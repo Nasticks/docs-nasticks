@@ -1,0 +1,73 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "name": "Nasticks Engineering",
+  "theme": "mint",
+  "colors": {
+    "primary": "#6D28D9",
+    "light": "#8B5CF6",
+    "dark": "#4C1D95"
+  },
+  "favicon": "/favicon.png",
+  "logo": {
+    "light": "/images/light-docs-nasticks.png",
+    "dark": "/images/dark-docs-nasticks.png",
+    "href": "https://nasticks.me"
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Blog & Docs",
+        "groups": [
+          {
+            "group": "Architecture Cloud",
+            "pages": [
+              "blog/terraform-gitops-journey",
+              "blog/aws-oidc-security",
+              "blog/why-not-kubernetes"
+            ]
+          },
+          {
+            "group": "Ops & FinOps",
+            "pages": [
+              "blog/sre-monitoring-github",
+              "blog/finops-aws-free-tier"
+            ]
+          }
+        ]
+      }
+    ],
+    "global": {
+      "anchors": [
+        {
+          "anchor": "Portfolio",
+          "href": "https://nasticks.me",
+          "icon": "arrow-left"
+        },
+        {
+          "anchor": "GitHub",
+          "href": "https://github.com/Nasticks",
+          "icon": "github"
+        }
+      ]
+    }
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Me Contacter",
+        "href": "mailto:contact@nasticks.me"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Code Source",
+      "href": "https://github.com/Nasticks/portfolio-devops"
+    }
+  },
+  "footer": {
+    "socials": {
+      "github": "https://github.com/Nasticks",
+      "linkedin": "https://linkedin.com/in/precieux-miberdolphe"
+    }
+  }
+}
