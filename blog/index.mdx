@@ -1,1 +1,71 @@
-[Copie le contenu de "blog/index.mdx - Accueil Blog"]
+---
+title: "Accueil Blog"
+sidebarTitle: "Accueil"
+description: "Base de connaissance technique, retours d'expérience et documentation de projets Cloud Native"
+icon: "house"
+---
+
+Bienvenue sur mon espace de documentation technique.
+
+Contrairement à mon [Portfolio](https://nasticks.me) qui présente mes projets finis, cet espace documente le **"Comment"** : les choix d'architecture, les défis DevOps et les solutions SRE que je mets en œuvre.
+
+## Article phare
+
+<Card
+  title="Portfolio DevOps à 0€: Du Rêve à la Réalité"
+  icon="rocket"
+  href="/blog/devops-cloud/portfolio-devops-zero-cost"
+>
+  **Guide complet** sur la construction d'une infrastructure AWS professionnelle sans dépenser un euro. Cet article couvre l'ensemble de mon expertise : Terraform, GitOps, OIDC, FinOps, monitoring SRE et architecture cloud. Parfait pour comprendre comment penser l'infrastructure de manière pragmatique et cost-effective.
+</Card>
+
+## Explorer par thématique
+
+Sélectionnez un sujet pour plonger dans le code et l'infrastructure.
+
+<CardGroup cols={2}>
+  <Card
+    title="Architecture Cloud & GitOps"
+    icon="cloud"
+    href="/blog/devops-cloud/portfolio-devops-zero-cost#étape-2-architecture-gitops-automatisée"
+  >
+    Infrastructure as Code avec Terraform, pipelines CI/CD automatisés et architecture GitOps complète.
+  </Card>
+  <Card
+    title="Sécurité & IAM"
+    icon="shield-check"
+    href="/blog/devops-cloud/portfolio-devops-zero-cost#étape-3-la-sécurité--oidc-et-zero-long-lived-keys"
+  >
+    Approche "Zero Trust" et authentification sans clés (Keyless) via OIDC pour une sécurité enterprise.
+  </Card>
+  <Card
+    title="Monitoring SRE"
+    icon="robot"
+    href="/blog/devops-cloud/portfolio-devops-zero-cost#étape-5-sre-monitoring--détecter-les-problèmes-avant-les-utilisateurs"
+  >
+    Monitoring synthétique avec GitHub Actions pour surveiller la production gratuitement.
+  </Card>
+  <Card
+    title="FinOps & Coûts"
+    icon="piggy-bank"
+    href="/blog/devops-cloud/portfolio-devops-zero-cost#étape-4-finops--rester-à-0€"
+  >
+    Héberger une infrastructure professionnelle à haute disponibilité pour 0€/mois avec AWS Free Tier.
+  </Card>
+</CardGroup>
+
+## Pourquoi cette documentation ?
+
+Dans une démarche **Docs-as-Code**, je crois fermement que la documentation est aussi importante que le code lui-même. Cet espace me permet de :
+
+1. **Partager** mes apprentissages avec la communauté.
+2. **Documenter** mes choix pour mes futurs moi (et mes collègues).
+3. **Démontrer** ma capacité à vulgariser des concepts techniques complexes.
+
+<Card
+  title="Voir le code source du projet"
+  icon="github"
+  href="https://github.com/Nasticks/portfolio-devops"
+>
+  Accéder au dépôt GitHub complet contenant l'infrastructure Terraform et le code Astro.
+</Card>

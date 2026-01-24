@@ -23,32 +23,26 @@
             "pages": ["blog/index"]
           },
           {
-            "group": "🔴 Architecture Cloud & DevOps",
+            "group": "Architecture Cloud & DevOps",
             "pages": [
-              "blog/devops-cloud/index",
-              "blog/devops-cloud/portfolio-devops-zero-cost"
+              "blog/devops-cloud/portfolio-devops-zero-cost",
+              "blog/devops-cloud/index"
             ]
           },
           {
-            "group": "☁️ Cloud",
-            "pages": [
-              "blog/cloud/index"
-            ]
-          },
-          {
-            "group": "🟡 Linux & Infrastructure",
+            "group": "Linux & Infrastructure",
             "pages": [
               "blog/linux-infrastructure/index"
             ]
           },
           {
-            "group": "🟠 Site Reliability Engineering",
+            "group": "Site Reliability Engineering",
             "pages": [
               "blog/sre-reliability/index"
             ]
           },
           {
-            "group": "🟣 AI/ML & MLOps",
+            "group": "AI/ML & MLOps",
             "pages": [
               "blog/ai-ml-ops/index"
             ]

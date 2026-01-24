@@ -1,13 +1,14 @@
 ---
 title: "Portfolio DevOps à 0€: Du Rêve à la Réalité"
-sidebarTitle: "Mon Voyage DevOps"
-description: "Comment j'ai construit une infrastructure AWS professionnelle sans dépenser un euro. Guide complet GitOps + Terraform + Sécurité."
+sidebarTitle: "Article Phare - DevOps Complet"
+description: "Guide complet : Infrastructure AWS enterprise-grade à 0€/mois. Terraform, GitOps, OIDC (Zero Trust), FinOps, monitoring SRE. Cas d'étude réel avec code, diagrammes et métriques."
 icon: "rocket"
 date: "2025-01-24"
 readingTime: "15 min"
 difficulty: "Intermediate"
-tags: ["terraform", "aws", "devops", "gitops", "oidc", "finops", "infrastructure-as-code"]
+tags: ["terraform", "aws", "devops", "gitops", "oidc", "finops", "infrastructure-as-code", "sre", "security", "ci-cd"]
 ---
+
 
 ## Introduction: Un Défi Simple, une Leçon Profonde
 
@@ -19,32 +20,32 @@ Mon objectif était de créer un portfolio personnel qui démontre non seulement
 
 Ce guide raconte cette aventure en détail, étape par étape, avec les décisions, les défis et les solutions.
 
-<Callout type="info" title="📚 TL;DR - Les 3 Big Wins">
+<Callout type="info" title="TL;DR - Les 3 Big Wins">
 Si tu n'as que 2 minutes:
-- ✅ **Sécurité:** OIDC élimine les clés d'accès longue-durée
-- ✅ **Coût:** Architecture serverless = $0/mois garantis
-- ✅ **Fiabilité:** Monitoring synthétique = détection avant utilisateurs
+- **Sécurité:** OIDC élimine les clés d'accès longue-durée
+- **Coût:** Architecture serverless = $0/mois garantis
+- **Fiabilité:** Monitoring synthétique = détection avant utilisateurs
 
-Lis l'article complet pour voir comment. ⬇️
+Lis l'article complet pour voir comment.
 </Callout>
 
 ---
 
-## 📚 Table des Matières
+## Table des Matières
 
-- [Les Principes Fondateurs](#-les-principes-fondateurs)
-- [Étape 1: Le Choix Architecture](#-étape-1-le-choix-architecture--pourquoi-s3-et-pas-kubernetes)
-- [Étape 2: Architecture GitOps](#-étape-2-architecture-gitops-automatisée)
-- [Étape 3: Sécurité OIDC](#-étape-3-la-sécurité--oidc-et-zero-long-lived-keys)
-- [Étape 4: FinOps](#-étape-4-finops--rester-à-0€)
-- [Étape 5: Monitoring SRE](#-étape-5-sre-monitoring--détecter-les-problèmes-avant-les-utilisateurs)
-- [Étape 6: Défis et Solutions](#-étape-6-les-défis-rencontrés--solutions)
-- [Résultats et Leçons](#-étape-7-métriques--leçons-apprises)
+- [Les Principes Fondateurs](#les-principes-fondateurs)
+- [Étape 1: Le Choix Architecture](#étape-1-le-choix-architecture---pourquoi-s3-et-pas-kubernetes)
+- [Étape 2: Architecture GitOps](#étape-2-architecture-gitops-automatisée)
+- [Étape 3: La Sécurité - OIDC](#étape-3-la-sécurité---oidc-et-zero-long-lived-keys)
+- [Étape 4: FinOps](#étape-4-finops---rester-à-0)
+- [Étape 5: SRE Monitoring](#étape-5-sre-monitoring---détecter-les-problèmes-avant-les-utilisateurs)
+- [Étape 6: Les Défis Rencontrés & Solutions](#étape-6-les-défis-rencontrés--solutions)
+- [Étape 7: Métriques & Leçons Apprises](#étape-7-métriques--leçons-apprises)
 - [Conclusion](#conclusion-la-vraie-maturation-devops)
 
 ---
 
-## 🎯 Les Principes Fondateurs
+## Les Principes Fondateurs
 
 Avant de coder, j'ai défini trois principes non-négociables:
 
@@ -56,7 +57,7 @@ Ces trois piliers ont guidé chaque décision technique.
 
 ---
 
-## 1️⃣ Étape 1: Le Choix Architecture - Pourquoi S3 et Pas Kubernetes?
+## Étape 1: Le Choix Architecture - Pourquoi S3 et Pas Kubernetes?
 
 ### Le Dilemme Initial
 
@@ -79,24 +80,24 @@ Mais arrêt. Réflexion. **KISS Principle** (*Keep It Simple, Stupid*).
 Un site portfolio est du **contenu statique**. HTML, CSS, images — c'est parfait pour S3.
 
 En choisissant **Astro** (générateur de site statique) + **S3** (Object Storage), j'obtiens:
-- ✅ Zéro coût de compute
-- ✅ Latence minimale (réplication multi-région S3)
-- ✅ Surface d'attaque réduite
-- ✅ Maintenance délégée à AWS
+- Zéro coût de compute
+- Latence minimale (réplication multi-région S3)
+- Surface d'attaque réduite
+- Maintenance délégée à AWS
 
-<Callout type="success" title="💡 Leçon Clé">
+<Callout type="success" title="Leçon Clé">
 La maturité DevOps, ce n'est pas d'utiliser la technologie la plus complexe, c'est de choisir celle qui résout le problème avec le moins de friction.
 </Callout>
 
 ---
 
-## 2️⃣ Étape 2: Architecture GitOps Automatisée
+## Étape 2: Architecture GitOps Automatisée
 
 ### Vision d'Ensemble
 
 ```mermaid
 graph TD
-    A["👨‍💻 Developer<br/>Push Code"] -->|git push main| B["GitHub Repository"]
+    A["Developer<br/>Push Code"] -->|git push main| B["GitHub Repository"]
     B -->|Webhook| C["GitHub Actions<br/>CI/CD Pipeline"]
     
     subgraph IaC["Infrastructure as Code"]
@@ -110,7 +111,7 @@ graph TD
         H["Playwright Tests"]
     end
     
-    subgraph Security["🔐 Security Layer"]
+    subgraph Security["Security Layer"]
         I["OIDC Auth"]
         J["Terraform State<br/>Locking"]
         K["IAM Role<br/>Assume"]
@@ -125,11 +126,11 @@ graph TD
     K -->|Allows| E
     D -->|Stores State| J
     
-    E -->|Provisions| AWS["☁️ AWS Infrastructure<br/>S3, IAM, DynamoDB, Budget"]
+    E -->|Provisions| AWS["AWS Infrastructure<br/>S3, IAM, DynamoDB, Budget"]
     G -->|Deploys| AWS
     H -->|Monitors| AWS
     
-    AWS -->|HTTPS| Website["🌐 Production<br/>nasticks.me"]
+    AWS -->|HTTPS| Website["Production<br/>nasticks.me"]
     Website -->|Serves| Users["Users"]
 ```
 
@@ -147,7 +148,7 @@ graph TD
 
 ---
 
-## 3️⃣ Étape 3: La Sécurité - OIDC et Zero Long-Lived Keys
+## Étape 3: La Sécurité - OIDC et Zero Long-Lived Keys
 
 ### Le Problème des Clés Classiques
 
@@ -156,11 +157,11 @@ Traditionnellement, pour autoriser GitHub à accéder à AWS, on procède ainsi:
 1. Créer un utilisateur IAM sur AWS
 2. Générer des clés (Access Key + Secret Key)
 3. Copier/coller ces clés dans GitHub "Secrets"
-4. ❌ Problème: Ces clés sont "longue durée" (ne changent jamais)
-5. ❌ Problème: Une fuite = accès complet pendant longtemps
-6. ❌ Problème: Rotation = tâche administrative manuelle
+4. Problème: Ces clés sont "longue durée" (ne changent jamais)
+5. Problème: Une fuite = accès complet pendant longtemps
+6. Problème: Rotation = tâche administrative manuelle
 
-<Callout type="warning" title="⚠️ Risque de Sécurité">
+<Callout type="warning" title="Risque de Sécurité">
 Des clés d'accès long-terme = surface d'attaque maximale. Une fuite = compromission complète.
 </Callout>
 
@@ -174,9 +175,9 @@ Processus:
 2. Le token contient: identité du repo, branche, workflow...
 3. GitHub envoie le token à AWS
 4. AWS vérifie la signature et l'origine
-5. ✅ AWS délivre des credentials temporaires (1h max)
-6. ✅ Pas de clés à gérer
-7. ✅ Accès granulaire par repo/branche
+5. AWS délivre des credentials temporaires (1h max)
+6. Pas de clés à gérer
+7. Accès granulaire par repo/branche
 
 ### Implémentation Terraform
 
@@ -202,7 +203,7 @@ resource "aws_iam_role" "github_actions" {
       }
       Condition = {
         StringLike = {
-          # 🔐 CRITIQUE: Seul CE repo peut utiliser ce rôle
+          # CRITIQUE: Seul CE repo peut utiliser ce rôle
           "token.actions.githubusercontent.com:sub" = "repo:Nasticks/portfolio-devops:*"
         }
       }
@@ -255,7 +256,7 @@ on:
     branches: [main]
 
 permissions:
-  id-token: write  # 🔑 Indispensable pour demander le token OIDC
+  id-token: write  # Indispensable pour demander le token OIDC
   contents: read
 
 jobs:
@@ -264,7 +265,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # ✅ Remplace les secrets GitHub par une auth OIDC
+      # Remplace les secrets GitHub par une auth OIDC
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -287,18 +288,18 @@ jobs:
 
 ### Résultat Final
 
-<Callout type="success" title="✅ Sécurité Enterprise">
-✅ Zéro clé d'accès long-terme dans les secrets GitHub  
-✅ Credentials temporaires (expiration 1h)  
-✅ Audit complet: AWS sait quel repo/branche a déclenché l'action  
-✅ Droit d'accès granulaire par repo
+<Callout type="success" title="Sécurité Enterprise">
+- Zéro clé d'accès long-terme dans les secrets GitHub  
+- Credentials temporaires (expiration 1h)  
+- Audit complet: AWS sait quel repo/branche a déclenché l'action  
+- Droit d'accès granulaire par repo
 
 C'est le standard des meilleures pratiques 2025.
 </Callout>
 
 ---
 
-## 4️⃣ Étape 4: FinOps - Rester à 0€
+## Étape 4: FinOps - Rester à 0€
 
 ### Le Cauchemar du "Bill Shock"
 
@@ -342,7 +343,7 @@ resource "aws_budgets_budget" "forecasted_alert" {
 }
 ```
 
-<Callout type="info" title="💡 Budget Alerts">
+<Callout type="info" title="Budget Alerts">
 Si le trafic explose soudainement (viral buzz, attaque DDoS), je suis alerté avant de recevoir une facture surprise.
 </Callout>
 
@@ -358,25 +359,26 @@ AWS facture la **sortie de données (Egress)** après les 100 Go gratuits par mo
    - HTML: Générés par Astro (zéro bloat)
 
 2. **Cache Strategy**
-   ```hcl
-   resource "aws_s3_object" "website_index" {
-     bucket               = aws_s3_bucket.website.id
-     key                  = "index.html"
-     source               = "dist/index.html"
-     etag                 = filemd5("dist/index.html")
-     content_type         = "text/html"
-     cache_control        = "public, max-age=3600"  # 1h
-   }
 
-   resource "aws_s3_object" "website_assets" {
-     bucket               = aws_s3_bucket.website.id
-     key                  = "assets/*"
-     source               = "dist/assets"
-     etag                 = filemd5("dist/assets")
-     content_type         = "application/octet-stream"
-     cache_control        = "public, max-age=31536000"  # 1 an (cache-buster en nom)
-   }
-   ```
+```hcl
+resource "aws_s3_object" "website_index" {
+  bucket               = aws_s3_bucket.website.id
+  key                  = "index.html"
+  source               = "dist/index.html"
+  etag                 = filemd5("dist/index.html")
+  content_type         = "text/html"
+  cache_control        = "public, max-age=3600"  # 1h
+}
+
+resource "aws_s3_object" "website_assets" {
+  bucket               = aws_s3_bucket.website.id
+  key                  = "assets/*"
+  source               = "dist/assets"
+  etag                 = filemd5("dist/assets")
+  content_type         = "application/octet-stream"
+  cache_control        = "public, max-age=31536000"  # 1 an (cache-buster en nom)
+}
+```
 
 3. **CDN Optional** (Cloudflare Free)
    - Cloudflare devant S3 absorbe 80-90% du trafic gratuitement
@@ -440,7 +442,7 @@ resource "aws_dynamodb_table" "terraform_locks" {
 
 ---
 
-## 5️⃣ Étape 5: SRE Monitoring - Détecter les Problèmes Avant les Utilisateurs
+## Étape 5: SRE Monitoring - Détecter les Problèmes Avant les Utilisateurs
 
 ### Le Cas d'Usage
 
@@ -564,13 +566,13 @@ test.describe('Production Monitoring', () => {
 | **Notification** | Email + Slack intégration |
 | **Historique** | Logs stockés dans GitHub |
 
-<Callout type="success" title="🚨 Proactive Monitoring">
+<Callout type="success" title="Proactive Monitoring">
 Si un test échoue, je reçois un email. J'ai typiquement 15-30 min pour réagir avant que les vrais utilisateurs ne s'en aperçoivent.
 </Callout>
 
 ---
 
-## 6️⃣ Étape 6: Les Défis Rencontrés & Solutions
+## Étape 6: Les Défis Rencontrés & Solutions
 
 ### Challenge #1: Le Cercle Vicieux du Bootstrap
 
@@ -609,10 +611,10 @@ terraform import aws_dynamodb_table.terraform_locks terraform-locks
 
 **Problème:** Un workflow GitHub Actions crash brutalement pendant une opération Terraform. Le DynamoDB lock reste actif et bloque les déploiements futurs.
 
-<Callout type="warning" title="⚠️ Challenge #2: State Locking">
+<Callout type="warning" title="Challenge #2: State Locking">
 **Symptôme:**
 
-```
+```text
 Error: Error acquiring the state lock
 Lock Info:
   ID:        abc123...
@@ -657,7 +659,7 @@ resource "aws_iam_openid_connect_provider" "github" {
   url             = "https://token.actions.githubusercontent.com"
   client_id_list  = ["sts.amazonaws.com"]
   
-  # ✅ Utiliser le certificat actuel, pas un thumbprint codé en dur
+  # Utiliser le certificat actuel, pas un thumbprint codé en dur
   thumbprint_list = [
     data.tls_certificate.github.certificates[0].sha1_fingerprint
   ]
@@ -666,7 +668,7 @@ resource "aws_iam_openid_connect_provider" "github" {
 
 ---
 
-## 7️⃣ Étape 7: Métriques & Leçons Apprises
+## Étape 7: Métriques & Leçons Apprises
 
 ### Résultats Finaux
 
@@ -675,7 +677,7 @@ resource "aws_iam_openid_connect_provider" "github" {
 | **Coût/mois** | $0.00 |
 | **Uptime** | 99.99% (SLA S3 garantit 99.999%) |
 | **Latence** | ~50ms (S3 multi-région) |
-| **TTFB** | <100ms |
+| **TTFB** | &lt;100ms |
 | **Lighthouse Score** | 95+ / 100 |
 | **Deploy Time** | ~3-5 min (end-to-end) |
 | **Security Score** | 98/100 |
@@ -708,7 +710,7 @@ resource "aws_iam_openid_connect_provider" "github" {
 
 ---
 
-## 8️⃣ Stack Complet et Code Source
+## Stack Complet et Code Source
 
 ### Technologies Utilisées
 
@@ -720,13 +722,13 @@ resource "aws_iam_openid_connect_provider" "github" {
 
 ### Ressources Clé
 
-- 📊 **GitHub Repository:** [Nasticks/portfolio-devops](https://github.com/Nasticks/portfolio-devops)
-- 🌐 **Live Site:** [nasticks.me](https://nasticks.me)
-- 📧 **Contact:** [contact@nasticks.me](mailto:contact@nasticks.me)
+- **GitHub Repository:** [Nasticks/portfolio-devops](https://github.com/Nasticks/portfolio-devops)
+- **Live Site:** [nasticks.me](https://nasticks.me)
+- **Contact:** [contact@nasticks.me](mailto:contact@nasticks.me)
 
 ---
 
-## 🎓 Conclusion: La Vraie Maturation DevOps
+## Conclusion: La Vraie Maturation DevOps
 
 Beaucoup de gens associent DevOps à "complexité". Kubernetes, Microservices, Docker, ArgoCD...
 
@@ -734,15 +736,15 @@ Mais la vraie maturité, c'est de savoir dire **"Non, ce projet ne mérite pas c
 
 Ce portfolio prouve trois choses:
 
-✅ **On peut être sécurisé sans clé d'accès**  
-✅ **On peut être performant sans dépenser**  
-✅ **On peut être professionnel en restant simple**
+- **On peut être sécurisé sans clé d'accès**  
+- **On peut être performant sans dépenser**  
+- **On peut être professionnel en restant simple**
 
 Voilà l'essence du bon DevOps: faire plus avec moins, en restant lucide sur les vrais besoins.
 
 ---
 
-## ⚡ Quick Start (5 min)
+## Quick Start (5 min)
 
 Copier/coller pour démarrer immédiatement:
 
@@ -768,7 +770,7 @@ aws s3 sync dist/ s3://your-bucket/
 
 ---
 
-## 🏢 Application Réelle
+## Application Réelle
 
 ### Scenario 1: Startup avec budget limité
 "Nous avons $0 le mois 1. Utiliser ce pattern → production day 1"
@@ -781,7 +783,7 @@ aws s3 sync dist/ s3://your-bucket/
 
 ---
 
-## 🎯 Prochaines Étapes
+## Prochaines Étapes
 
 ### Pour les Recruteurs
 Si tu évalues mon profil: c'est ici que tu vois comment je pense l'architecture. Pas de buzzwords, juste du pragmatisme et de la maturité technique.
@@ -802,7 +804,7 @@ Utilise ce pattern pour ton équipe:
 
 ---
 
-## 💬 Feedback & Questions
+## Feedback & Questions
 
 - **Hiring?** [Contacte-moi directement](mailto:nasticks.dev@gmail.com)
 - **Discussion?** [LinkedIn](https://linkedin.com/in/precieux-miberdolphe)
