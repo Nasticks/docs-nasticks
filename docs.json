@@ -9,8 +9,8 @@
   },
   "favicon": "/favicon.png",
   "logo": {
-    "light": "/images/light-docs-nasticks.png",
-    "dark": "/images/dark-docs-nasticks.png",
+    "light": "/assets/images/light-docs-nasticks.png",
+    "dark": "/assets/images/dark-docs-nasticks.png",
     "href": "https://nasticks.me"
   },
   "navigation": {
@@ -19,19 +19,43 @@
         "tab": "Blog & Docs",
         "groups": [
           {
-            "group": "Architecture Cloud",
+            "group": "Démarrage",
+            "pages": ["blog/index"]
+          },
+          {
+            "group": "🔴 Architecture Cloud & DevOps",
             "pages": [
-              "blog/terraform-gitops-journey",
-              "blog/aws-oidc-security",
-              "blog/why-not-kubernetes"
+              "blog/devops-cloud/index",
+              "blog/devops-cloud/portfolio-devops-zero-cost"
             ]
           },
           {
-            "group": "Ops & FinOps",
+            "group": "☁️ Cloud",
             "pages": [
-              "blog/sre-monitoring-github",
-              "blog/finops-aws-free-tier"
+              "blog/cloud/index"
             ]
+          },
+          {
+            "group": "🟡 Linux & Infrastructure",
+            "pages": [
+              "blog/linux-infrastructure/index"
+            ]
+          },
+          {
+            "group": "🟠 Site Reliability Engineering",
+            "pages": [
+              "blog/sre-reliability/index"
+            ]
+          },
+          {
+            "group": "🟣 AI/ML & MLOps",
+            "pages": [
+              "blog/ai-ml-ops/index"
+            ]
+          },
+          {
+            "group": "À Propos",
+            "pages": ["blog/authors"]
           }
         ]
       }
@@ -54,8 +78,14 @@
   "navbar": {
     "links": [
       {
-        "label": "Me Contacter",
-        "href": "mailto:contact@nasticks.me"
+        "label": "Portfolio",
+        "href": "https://nasticks.me",
+        "icon": "arrow-up-right"
+      },
+      {
+        "label": "LinkedIn",
+        "href": "https://linkedin.com/in/precieux-miberdolphe",
+        "icon": "linkedin"
       }
     ],
     "primary": {

@@ -1,0 +1,21 @@
+name: Deploy Documentation
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy to Mintlify
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to Mintlify
+        uses: mintlify/action@main
+        with:
+          mintlify-team: ${{ secrets.MINTLIFY_TEAM }}
+          mintlify-key: ${{ secrets.MINTLIFY_KEY }}

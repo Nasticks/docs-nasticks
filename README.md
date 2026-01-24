@@ -24,7 +24,7 @@ docs-nasticks/
 │   ├── linux-infrastructure/  # Linux & Infrastructure
 │   ├── sre-reliability/   # Site Reliability Engineering
 │   ├── ai-ml-ops/         # AI/ML & MLOps
-│   └── cloud/             # Cloud Engineering
+│   ├── cloud/             # Cloud Engineering
 │   └── _meta.json         # Métadonnées de navigation
 ├── config/                # Fichiers de configuration
 ├── scripts/               # Scripts utilitaires

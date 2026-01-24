@@ -1,0 +1,50 @@
+name: Validate Documentation
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  validate:
+    name: Validate MDX and Structure
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install Mintlify CLI
+        run: npm install -g mintlify
+
+      - name: Validate docs.json
+        run: |
+          if [ ! -f docs.json ]; then
+            echo "❌ docs.json not found"
+            exit 1
+          fi
+          echo "✅ docs.json exists"
+
+      - name: Check MDX files syntax
+        run: |
+          echo "Checking MDX files..."
+          find blog -name "*.mdx" -type f | while read file; do
+            echo "Checking: $file"
+            if ! grep -q "^---" "$file"; then
+              echo "⚠️  Warning: $file might be missing frontmatter"
+            fi
+          done
+
+      - name: Validate structure
+        run: |
+          echo "Validating project structure..."
+          [ -d "blog" ] || (echo "❌ blog/ directory missing" && exit 1)
+          [ -d "assets/images" ] || (echo "❌ assets/images/ directory missing" && exit 1)
+          [ -d "assets/logos" ] || (echo "❌ assets/logos/ directory missing" && exit 1)
+          echo "✅ Structure validated"
