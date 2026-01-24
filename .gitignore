@@ -61,3 +61,7 @@ coverage/
 *.pid
 *.seed
 *.pid.lock
+
+# Documentation technique locale (non publique)
+docs/DOMAIN_SETUP.md
+docs/*.md
