@@ -7,7 +7,7 @@
     "light": "#8B5CF6",
     "dark": "#4C1D95"
   },
-  "favicon": "/favicon.png",
+  "favicon": "/assets/images/favicon.svg",
   "logo": {
     "light": "/assets/images/light-docs-nasticks.png",
     "dark": "/assets/images/dark-docs-nasticks.png",
