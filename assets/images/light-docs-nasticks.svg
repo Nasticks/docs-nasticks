@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="50" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gradLight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6D28D9;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="200" height="50" fill="#FFFFFF"/>
+  
+  <!-- Icon circle with N -->
+  <circle cx="25" cy="25" r="20" fill="url(#gradLight)"/>
+  <path d="M 15 10 L 15 40 L 22 40 L 22 20 L 28 40 L 35 40 L 35 10 L 28 10 L 28 30 L 22 10 Z" 
+        fill="white" 
+        stroke="white" 
+        stroke-width="0.5"/>
+  
+  <!-- Text "Docs" -->
+  <text x="55" y="32" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#121212">Docs</text>
+  
+  <!-- Separator "-" -->
+  <text x="95" y="32" font-family="Arial, sans-serif" font-size="16" fill="#121212">-</text>
+  
+  <!-- Text "Nasticks" -->
+  <text x="105" y="32" font-family="Arial, sans-serif" font-size="16" fill="#6D28D9">Nasticks</text>
+</svg>
