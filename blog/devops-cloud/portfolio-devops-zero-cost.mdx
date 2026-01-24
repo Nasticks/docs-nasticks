@@ -59,6 +59,10 @@ Ces trois piliers ont guidé chaque décision technique.
 
 ## Étape 1: Le Choix Architecture - Pourquoi S3 et Pas Kubernetes?
 
+<Callout type="info" title="Article dédié disponible">
+Si vous voulez approfondir ce sujet spécifiquement, consultez l'article dédié : [S3 vs Kubernetes - Pourquoi pas Kubernetes ?](/blog/devops-cloud/choix-technologique-s3-vs-kubernetes)
+</Callout>
+
 ### Le Dilemme Initial
 
 Avec mes 5+ ans de DevOps, ma première idée fut de déployer un site sur **Kubernetes (EKS)** ou **Docker (ECS/Fargate)**. Après tout, c'est mon domaine d'expertise.
@@ -92,6 +96,10 @@ La maturité DevOps, ce n'est pas d'utiliser la technologie la plus complexe, c'
 ---
 
 ## Étape 2: Architecture GitOps Automatisée
+
+<Callout type="info" title="Article dédié disponible">
+Pour une vue d'ensemble détaillée de l'architecture GitOps, consultez : [Architecture GitOps avec Terraform](/blog/devops-cloud/architecture-gitops-terraform)
+</Callout>
 
 ### Vision d'Ensemble
 
@@ -149,6 +157,10 @@ graph TD
 ---
 
 ## Étape 3: La Sécurité - OIDC et Zero Long-Lived Keys
+
+<Callout type="info" title="Article dédié disponible">
+Pour approfondir la sécurité OIDC, consultez : [Sécuriser AWS avec OIDC](/blog/devops-cloud/securite-oidc-aws)
+</Callout>
 
 ### Le Problème des Clés Classiques
 
@@ -301,6 +313,10 @@ C'est le standard des meilleures pratiques 2025.
 
 ## Étape 4: FinOps - Rester à 0€
 
+<Callout type="info" title="Article dédié disponible">
+Pour approfondir la gestion des coûts, consultez : [FinOps : Infra à 0€](/blog/devops-cloud/finops-infra-zero-cost)
+</Callout>
+
 ### Le Cauchemar du "Bill Shock"
 
 La première facture cloud peut être une surprise... très onéreuse. Une instance EC2 oubliée, un Load Balancer inactif, des snapshots mal supprimés... et boom, 500€ à la fin du mois.
@@ -443,6 +459,10 @@ resource "aws_dynamodb_table" "terraform_locks" {
 ---
 
 ## Étape 5: SRE Monitoring - Détecter les Problèmes Avant les Utilisateurs
+
+<Callout type="info" title="Article dédié disponible">
+Pour approfondir le monitoring SRE, consultez : [Monitoring SRE Gratuit](/blog/devops-cloud/monitoring-sre-github-actions)
+</Callout>
 
 ### Le Cas d'Usage
 

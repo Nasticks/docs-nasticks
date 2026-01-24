@@ -1,6 +1,9 @@
 {
     "index": "Vue d'ensemble",
-    "portfolio-devops-zero-cost": "Portfolio à 0€",
-    "terraform-best-practices": "Terraform Best Practices (Soon)",
-    "aws-security-deep-dive": "AWS Security (Soon)"
+    "portfolio-devops-zero-cost": "Article Complet - Portfolio à 0€",
+    "architecture-gitops-terraform": "Architecture GitOps & Terraform",
+    "securite-oidc-aws": "Sécurité OIDC & Zero Trust",
+    "choix-technologique-s3-vs-kubernetes": "S3 vs Kubernetes",
+    "finops-infra-zero-cost": "FinOps & Coûts",
+    "monitoring-sre-github-actions": "Monitoring SRE"
   }

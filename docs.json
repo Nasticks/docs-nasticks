@@ -26,7 +26,12 @@
             "group": "Architecture Cloud & DevOps",
             "pages": [
               "blog/devops-cloud/portfolio-devops-zero-cost",
-              "blog/devops-cloud/index"
+              "blog/devops-cloud/index",
+              "blog/devops-cloud/architecture-gitops-terraform",
+              "blog/devops-cloud/securite-oidc-aws",
+              "blog/devops-cloud/choix-technologique-s3-vs-kubernetes",
+              "blog/devops-cloud/finops-infra-zero-cost",
+              "blog/devops-cloud/monitoring-sre-github-actions"
             ]
           },
           {

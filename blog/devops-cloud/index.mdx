@@ -18,7 +18,7 @@ Bienvenue dans la section **DevOps & Cloud** de mon blog. Ici, je partage mes ex
 - **Trade-offs technologiques** et décisions architecturales
 - **Cost optimization** et FinOps
 
-## Article principal
+## Article complet (recommandé)
 
 <Card 
   title="Portfolio DevOps à 0€: Du Rêve à la Réalité"
@@ -27,14 +27,40 @@ Bienvenue dans la section **DevOps & Cloud** de mon blog. Ici, je partage mes ex
   icon="rocket"
 />
 
-## Articles
+## Articles par thématique
 
-<CardGroup cols={1}>
+Si vous préférez lire un sujet spécifique sans parcourir l'article complet :
+
+<CardGroup cols={2}>
   <Card 
-    title="Portfolio DevOps à 0€"
-    description="Comment j'ai construit une infrastructure enterprise sans dépenser un euro. Histoire complète avec Terraform, OIDC, monitoring et FinOps."
-    href="/blog/devops-cloud/portfolio-devops-zero-cost"
-    icon="rocket"
+    title="Architecture GitOps & Terraform"
+    description="Vue d'ensemble de la plateforme DevOps sur AWS. Architecture GitOps complète avec Terraform, GitHub Actions et Infrastructure as Code."
+    href="/blog/devops-cloud/architecture-gitops-terraform"
+    icon="map"
+  />
+  <Card 
+    title="Sécurité OIDC & Zero Trust"
+    description="Comment supprimer les clés d'accès grâce à l'identité fédérée. Authentification Zero Trust avec OIDC pour GitHub Actions."
+    href="/blog/devops-cloud/securite-oidc-aws"
+    icon="shield-check"
+  />
+  <Card 
+    title="S3 vs Kubernetes"
+    description="Analyse critique : pourquoi S3 bat Kubernetes pour ce projet. KISS principle et right tool for the job."
+    href="/blog/devops-cloud/choix-technologique-s3-vs-kubernetes"
+    icon="anchor"
+  />
+  <Card 
+    title="FinOps & Coûts"
+    description="Optimiser les coûts AWS pour rester dans le Free Tier. Budgets, alertes et stratégies d'optimisation."
+    href="/blog/devops-cloud/finops-infra-zero-cost"
+    icon="piggy-bank"
+  />
+  <Card 
+    title="Monitoring SRE"
+    description="Détourner GitHub Actions pour surveiller la production. Synthetic monitoring avec Playwright et cron jobs."
+    href="/blog/devops-cloud/monitoring-sre-github-actions"
+    icon="robot"
   />
 </CardGroup>
 

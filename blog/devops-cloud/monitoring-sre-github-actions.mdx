@@ -1,0 +1,80 @@
+---
+title: "Monitoring SRE Gratuit"
+sidebarTitle: "Monitoring GitHub"
+description: "Détourner GitHub Actions pour surveiller la production. Synthetic monitoring avec Playwright et cron jobs."
+icon: "robot"
+date: "2025-01-24"
+readingTime: "7 min"
+difficulty: "Intermediate"
+tags: ["sre", "monitoring", "github-actions", "playwright", "synthetic-monitoring"]
+---
+
+## Surveiller la Production avec GitHub Actions
+
+Une fois mon portfolio en ligne, une question s'est posée : **"Comment savoir s'il tombe en panne ?"**
+
+Je ne voulais pas payer un service SaaS comme Datadog ou Pingdom pour un projet personnel. Je ne voulais pas non plus gérer un serveur VPS dédié juste pour faire tourner Uptime Kuma.
+
+J'ai donc adopté une approche **Serverless SRE** en utilisant les ressources que j'avais déjà : GitHub Actions.
+
+## Le concept du "Synthetic Monitoring"
+
+Au lieu d'attendre qu'un utilisateur se plaigne ("Ton site est cassé"), on envoie un robot visiter le site régulièrement.
+
+J'utilise **Playwright**, un framework de test E2E (End-to-End) très puissant. Il ne se contente pas de vérifier si le serveur répond "200 OK". Il vérifie :
+
+1. Que la page se charge.
+2. Que le logo est visible.
+3. Que le titre est correct.
+
+C'est ce qu'on appelle tester le **Parcours Utilisateur Réel**.
+
+## Le Hack GitHub Actions
+
+GitHub Actions permet de déclencher des workflows non seulement sur un `push`, mais aussi à des heures précises (Cron).
+
+Voici ma configuration `.github/workflows/deploy.yml` :
+
+```yaml
+on:
+  # Déclenchement classique au déploiement
+  push:
+    branches: ["main"]
+  
+  # La magie opère ici : Tous les jours à 08h00 UTC
+  schedule:
+    - cron: '0 8 * * *'
+```
+
+Ensuite, il a fallu ruser. Si c'est un monitoring du matin, je ne veux pas redéployer tout le site. Je veux juste lancer les tests.
+
+J'ai utilisé la condition `if: always()` pour forcer l'exécution des tests même si l'étape de déploiement est sautée :
+
+```yaml
+e2e-test:
+  if: always() # Lance-toi même si le déploiement n'a pas eu lieu ce matin
+  steps:
+    - name: Run Playwright Tests
+      env:
+        # On teste la PROD, pas le localhost
+        PLAYWRIGHT_TEST_BASE_URL: "https://nasticks.me"
+      run: npx playwright test
+```
+
+## Bilan FinOps
+
+- **Coût Infrastructure :** 0€ (inclus dans le Free Tier GitHub).
+- **Maintenance :** Nulle (Pas de serveur à patcher).
+- **Fiabilité :** Si le test échoue, je reçois une notification GitHub par email immédiatement.
+
+C'est une solution élégante qui prouve qu'on peut faire du SRE (Site Reliability Engineering) sérieux sans budget, juste avec de l'ingéniosité.
+
+---
+
+<Card
+  title="Article complet"
+  icon="rocket"
+  href="/blog/devops-cloud/portfolio-devops-zero-cost#étape-5-sre-monitoring---détecter-les-problèmes-avant-les-utilisateurs"
+>
+  Pour une vue d'ensemble complète incluant l'architecture GitOps, sécurité OIDC, FinOps et tous les détails, consultez l'article principal "Portfolio DevOps à 0€".
+</Card>
