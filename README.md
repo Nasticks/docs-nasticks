@@ -2,12 +2,14 @@
 
 Base de connaissance technique, retours d'expérience et documentation de projets Cloud Native.
 
-[![Documentation](https://img.shields.io/badge/docs-mintlify-purple)](https://docs.nasticks.me)
+[![Documentation](https://img.shields.io/badge/docs-mintlify-purple)](https://blog.nasticks.me)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 ## 🎯 À propos
 
 Ce dépôt contient la documentation technique de mes projets DevOps, Cloud Architecture, SRE et MLOps. Contrairement à mon [Portfolio](https://nasticks.me) qui présente les projets finis, cet espace documente le **"Comment"** : les choix d'architecture, les défis DevOps et les solutions SRE.
+
+> 📖 **Pour une vue complète du blog et de son contenu, consultez le [README du blog](blog/README.md)**
 
 ## 📁 Structure du Projet
 
@@ -20,12 +22,18 @@ docs-nasticks/
 │   │   └── featured/      # Images de couverture
 │   └── logos/             # Logos et icônes
 ├── blog/                  # Contenu principal (MDX)
+│   ├── README.md          # Documentation complète du blog ⭐
 │   ├── devops-cloud/      # Architecture Cloud & DevOps
 │   ├── linux-infrastructure/  # Linux & Infrastructure
 │   ├── sre-reliability/   # Site Reliability Engineering
 │   ├── ai-ml-ops/         # AI/ML & MLOps
-│   ├── cloud/             # Cloud Engineering
 │   └── _meta.json         # Métadonnées de navigation
+├── docs/                  # Documentation technique locale (non publique)
+│   ├── DOMAIN_SETUP.md    # Configuration domaine personnalisé
+│   ├── DEPLOYMENT.md      # Guide de déploiement
+│   ├── CONTENT_GUIDELINES.md  # Standards de contenu
+│   ├── MINTLIFY_CONFIG.md # Référence configuration
+│   └── TROUBLESHOOTING.md # Guide de dépannage
 ├── config/                # Fichiers de configuration
 ├── scripts/               # Scripts utilitaires
 ├── docs.json              # Configuration Mintlify
@@ -33,18 +41,20 @@ docs-nasticks/
 └── README.md              # Ce fichier
 ```
 
+> 📖 **Pour une documentation complète du blog, consultez [blog/README.md](blog/README.md)**
+
 ## 🚀 Démarrage Rapide
 
 ### Prérequis
 
 - Node.js 18+ 
 - npm ou yarn
-- [Mintlify CLI](https://www.npmjs.com/package/mintlify)
+- [Mint CLI](https://www.npmjs.com/package/mintlify)
 
 ### Installation
 
 ```bash
-# Installer Mintlify CLI globalement
+# Installer Mint CLI globalement
 npm install -g mintlify
 
 # Cloner le dépôt
@@ -52,7 +62,7 @@ git clone https://github.com/Nasticks/docs-nasticks.git
 cd docs-nasticks
 
 # Lancer le serveur de développement
-mintlify dev
+mint dev
 ```
 
 Le site sera accessible sur `http://localhost:3000`
@@ -133,8 +143,8 @@ Le déploiement est automatique via GitHub Actions lorsque vous poussez sur `mai
 ### Déploiement manuel
 
 ```bash
-# Via Mintlify CLI
-mintlify deploy
+# Via Mint CLI
+mint deploy
 ```
 
 ### Variables d'environnement requises
@@ -167,16 +177,16 @@ Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de 
 
 ## 🔗 Liens
 
-- **Documentation Live** : [docs.nasticks.me](https://docs.nasticks.me)
+- **Documentation Live** : [blog.nasticks.me](https://blog.nasticks.me)
 - **Portfolio** : [nasticks.me](https://nasticks.me)
 - **GitHub** : [@Nasticks](https://github.com/Nasticks)
-- **LinkedIn** : [Précieux Miberdolphe](https://linkedin.com/in/precieux-miberdolphe)
+- **Blog README** : [blog/README.md](blog/README.md) - Documentation complète du blog
 
 ## 📞 Contact
 
 Pour toute question ou suggestion :
 - 📧 Email : [contact@nasticks.me](mailto:contact@nasticks.me)
-- 💬 LinkedIn : [Précieux Miberdolphe](https://linkedin.com/in/precieux-miberdolphe)
+- 💬 GitHub Issues : [Ouvrir une issue](https://github.com/Nasticks/docs-nasticks/issues)
 
 ---
 

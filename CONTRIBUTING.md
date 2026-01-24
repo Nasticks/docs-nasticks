@@ -34,7 +34,7 @@ git checkout -b feature/nom-de-votre-contribution
 
 - Écrire votre article en MDX
 - Suivre les standards de code ci-dessous
-- Tester localement avec `mintlify dev`
+- Tester localement avec `mint dev`
 
 ### 4. Commit et Push
 

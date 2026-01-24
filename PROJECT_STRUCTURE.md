@@ -123,7 +123,7 @@ Page d'accueil principale du site
 
 1. Créer/modifier un article dans `blog/[categorie]/`
 2. Mettre à jour `_meta.json` si nouvel article
-3. Tester localement : `mintlify dev`
+3. Tester localement : `mint dev`
 4. Commit et push
 5. Déploiement automatique via GitHub Actions
 

@@ -84,7 +84,7 @@ Voir [CONTENT_GUIDELINES.md](../docs/CONTENT_GUIDELINES.md) pour plus de détail
 2. **Ajouter le frontmatter** avec titre et description
 3. **Mettre à jour `_meta.json`** de la section
 4. **Ajouter à `docs.json`** dans la navigation
-5. **Tester localement** avec Mintlify CLI
+5. **Tester localement** avec Mint CLI (`mint dev`)
 6. **Commit et push** sur `main`
 
 ### Standards de qualité

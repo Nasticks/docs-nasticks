@@ -14,4 +14,4 @@ nano blog/devops-cloud/_meta.json
 nano docs.json
 
 # 6. Test
-mintlify dev
+mint dev
