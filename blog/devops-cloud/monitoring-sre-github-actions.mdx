@@ -57,7 +57,7 @@ e2e-test:
     - name: Run Playwright Tests
       env:
         # On teste la PROD, pas le localhost
-        PLAYWRIGHT_TEST_BASE_URL: "https://nasticks.me"
+        PLAYWRIGHT_TEST_BASE_URL: "https://your-domain.com"
       run: npx playwright test
 ```
 

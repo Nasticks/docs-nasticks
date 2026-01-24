@@ -32,7 +32,7 @@ La peur du "Bill Shock" (la facture surprise) est réelle. J'ai utilisé Terrafo
 
 ```hcl
 resource "aws_budgets_budget" "zero_cost" {
-  name              = "budget-zero-limit"
+  name              = "your-project-budget-zero-limit"
   budget_type       = "COST"
   limit_amount      = "1.0" # Alerte dès 1$
   limit_unit        = "USD"
