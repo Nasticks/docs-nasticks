@@ -1,7 +1,7 @@
 ---
 title: "Portfolio DevOps à 0€: Du Rêve à la Réalité"
 sidebarTitle: "Article Phare - DevOps Complet"
-description: "Guide complet : Infrastructure AWS enterprise-grade à 0€/mois. Terraform, GitOps, OIDC (Zero Trust), FinOps, monitoring SRE. Cas d'étude réel avec code, diagrammes et métriques."
+description: "Guide complet : Infrastructure AWS production-ready à 0€/mois. Terraform, GitOps, OIDC (Zero Trust), FinOps, monitoring SRE. Cas d'étude réel avec code, diagrammes et métriques."
 icon: "rocket"
 date: "2025-01-24"
 readingTime: "15 min"
@@ -42,7 +42,7 @@ Lis l'article complet pour voir comment.
 - [Étape 5: SRE Monitoring](#étape-5-sre-monitoring---détecter-les-problèmes-avant-les-utilisateurs)
 - [Étape 6: Les Défis Rencontrés & Solutions](#étape-6-les-défis-rencontrés--solutions)
 - [Étape 7: Métriques & Leçons Apprises](#étape-7-métriques--leçons-apprises)
-- [Conclusion](#conclusion-la-vraie-maturation-devops)
+- [Conclusion](#conclusion-mon-approche-du-devops)
 
 ---
 
@@ -66,7 +66,7 @@ Si vous voulez approfondir ce sujet spécifiquement, consultez l'article dédié
 
 ### Le Dilemme Initial
 
-Avec mes 5+ ans de DevOps, ma première idée fut de déployer un site sur **Kubernetes (EKS)** ou **Docker (ECS/Fargate)**. Après tout, c'est mon domaine d'expertise.
+Ma première idée fut de déployer un site sur **Kubernetes (EKS)** ou **Docker (ECS/Fargate)**. Après tout, c'est une techno que je maîtrise.
 
 Mais arrêt. Réflexion. **KISS Principle** (*Keep It Simple, Stupid*).
 
@@ -91,7 +91,7 @@ En choisissant **Astro** (générateur de site statique) + **S3** (Object Storag
 - Maintenance délégée à AWS
 
 <Callout type="success" title="Leçon Clé">
-La maturité DevOps, ce n'est pas d'utiliser la technologie la plus complexe, c'est de choisir celle qui résout le problème avec le moins de friction.
+Une approche DevOps pragmatique, c'est de choisir la techno qui résout le problème avec le moins de friction, pas forcément la plus complexe.
 </Callout>
 
 ---
@@ -301,7 +301,7 @@ jobs:
 
 ### Résultat Final
 
-<Callout type="success" title="Sécurité Enterprise">
+<Callout type="success" title="Sécurité Production">
 - Zéro clé d'accès long-terme dans les secrets GitHub  
 - Credentials temporaires (expiration 1h)  
 - Audit complet: AWS sait quel repo/branche a déclenché l'action  
@@ -749,11 +749,11 @@ resource "aws_iam_openid_connect_provider" "github" {
 
 ---
 
-## Conclusion: La Vraie Maturation DevOps
+## Conclusion: Mon approche du DevOps
 
 Beaucoup de gens associent DevOps à "complexité". Kubernetes, Microservices, Docker, ArgoCD...
 
-Mais la vraie maturité, c'est de savoir dire **"Non, ce projet ne mérite pas cette complexité"** et de choisir la solution la plus simple qui fonctionne.
+Pour moi, l'essentiel c'est de savoir dire **"Non, ce projet ne mérite pas cette complexité"** et de choisir la solution la plus simple qui fonctionne.
 
 Ce portfolio prouve trois choses:
 
@@ -807,7 +807,7 @@ aws s3 sync dist/ s3://your-bucket/
 ## Prochaines Étapes
 
 ### Pour les Recruteurs
-Si tu évalues mon profil: c'est ici que tu vois comment je pense l'architecture. Pas de buzzwords, juste du pragmatisme et de la maturité technique.
+Si tu évalues mon profil: c'est ici que tu vois comment je raisonne l'architecture. Pas de buzzwords, des choix expliqués et un retour concret sur l'implémentation.
 
 ### Pour les Développeurs
 Reproduire ce setup:
@@ -833,4 +833,4 @@ Utilise ce pattern pour ton équipe:
 ---
 
 *Dernière mise à jour: Janvier 2025*  
-*Portfolio DevOps v1.0 - Zero Cost, Enterprise Grade*
+*Portfolio DevOps v1.0 - Zero Cost, Production-Ready*
